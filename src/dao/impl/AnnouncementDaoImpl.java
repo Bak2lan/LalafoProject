@@ -10,6 +10,7 @@ import java.util.List;
 public class AnnouncementDaoImpl implements AnnouncementDao {
 
     private DataBase dataBase;
+    private Long announcementId=1L;
 
     public AnnouncementDaoImpl(DataBase dataBase) {
         this.dataBase = dataBase;
@@ -18,6 +19,7 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 
     @Override
     public String addAnnouncement(Announcement announcement) {
+        announcement.setId(announcementId++);
         dataBase.getAnnouncements().add(announcement);
         return "Added Announcement";
     }
